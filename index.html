@@ -141,8 +141,8 @@
         .couple-profiles {
             display: flex !important;
             flex-direction: row !important;
-            justify-content: center;
-            align-items: center;
+            justify-content: center !important;
+            align-items: center !important;
             gap: 15px;
             margin: 30px auto 0 auto;
             max-width: 600px;
@@ -193,6 +193,13 @@
             opacity: 0.6;
             padding-bottom: 35px;
         }
+
+        @media screen and (max-width: 768px) {
+    .couple-profiles {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
 
         /* Intro Section */
         .intro p {
