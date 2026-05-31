@@ -14,11 +14,11 @@
             --accent-color: #8c8275;
             --light-beige: #f4f1ea;
             --border-color: #e5dfd5;
+            --heart-color: #d4a396; /* Elegant rose-gold for the heart indicator */
         }
 
         /* --- GLOBAL RESPONSIVE BASE --- */
         html {
-            /* Dynamically sizes base text relative to viewport width */
             font-size: calc(14px + 0.3vw); 
         }
 
@@ -39,9 +39,8 @@
             letter-spacing: 1px;
         }
 
-        /* Responsive container constraints */
         section {
-            padding: 10% 24px; /* Percentage padding scales with screen height */
+            padding: 10% 24px; 
             max-width: 650px;
             margin: 0 auto;
             box-sizing: border-box;
@@ -144,6 +143,64 @@
             color: #555;
         }
 
+        /* --- MINI WEDDING CALENDAR --- */
+        .calendar-wrapper {
+            max-width: 320px;
+            margin: 0 auto 40px auto;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(229, 223, 213, 0.5);
+        }
+        .calendar-month {
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: var(--accent-color);
+            text-transform: uppercase;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            row-gap: 12px;
+            font-size: 0.9rem;
+        }
+        .calendar-day-label {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #a0988e;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        .calendar-day-label:first-child, 
+        .calendar-grid span:nth-child(7n+1) {
+            color: #c97a7a; /* Muted red hue for Sundays */
+        }
+        .calendar-grid span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 32px;
+            position: relative;
+            font-weight: 300;
+        }
+        /* Heart Highlight Styling */
+        .calendar-grid .wedding-day {
+            font-weight: 600;
+            color: white !important;
+            z-index: 1;
+        }
+        .calendar-grid .wedding-day::before {
+            content: '♥';
+            position: absolute;
+            font-size: 2.2rem;
+            color: var(--heart-color);
+            z-index: -1;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         /* Details & Map Section */
         .details h2 {
             font-size: 2.2rem;
@@ -161,7 +218,7 @@
         .map-container {
             width: 100%;
             height: 0;
-            padding-bottom: 60px; /* Maintains beautiful responsive box scale */
+            padding-bottom: 60px; 
             min-height: 260px;
             background-color: #eee;
             border-radius: 2px;
@@ -407,11 +464,9 @@
             100% { transform: scale(1); }
         }
 
-        /* --- SPECIFIC DEVICE MEDIA QUERIES --- */
-        
-        /* 1. Mobile Smart Phones (Portrait view Optimization) */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media screen and (max-width: 480px) {
-            html { font-size: 15px; } /* Ensures readability on small handheld displays */
+            html { font-size: 15px; } 
             section { padding: 60px 20px; }
             .welcome-box h2 { font-size: 2.5rem; }
             .hero h1 { font-size: 2.4rem; }
@@ -420,9 +475,9 @@
             .icon-container { width: 50px; height: 50px; }
             .icon-container svg { width: 24px; height: 24px; }
             .music-toggle-btn { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+            .calendar-wrapper { padding: 15px 10px; }
         }
 
-        /* 2. Tablets and Laptops (Landscape / Desktop view Balance) */
         @media screen and (min-width: 768px) {
             html { font-size: 16px; }
             section { padding: 90px 24px; }
@@ -523,6 +578,56 @@
     <section class="details" style="background-color: var(--light-beige);">
         <h2 class="serif">Date & Location</h2>
         <div class="divider"></div>
+
+        <!-- NEW RESPONSIVE MONTHLY CALENDAR -->
+        <div class="calendar-wrapper">
+            <div class="calendar-month serif">November 2026</div>
+            <div class="calendar-grid">
+                <!-- Day Titles -->
+                <span class="calendar-day-label">S</span>
+                <span class="calendar-day-label">M</span>
+                <span class="calendar-day-label">T</span>
+                <span class="calendar-day-label">W</span>
+                <span class="calendar-day-label">T</span>
+                <span class="calendar-day-label">F</span>
+                <span class="calendar-day-label">S</span>
+                
+                <!-- November 2026 starts on a Sunday -->
+                <span class="wedding-day">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+                <span>5</span>
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+                <span>11</span>
+                <span>12</span>
+                <span>13</span>
+                <span>14</span>
+                <span>15</span>
+                <span>16</span>
+                <span>17</span>
+                <span>18</span>
+                <span>19</span>
+                <span>20</span>
+                <span>21</span>
+                <span>22</span>
+                <span>23</span>
+                <span>24</span>
+                <span>25</span>
+                <span>26</span>
+                <span>27</span>
+                <span>28</span>
+                <span>29</span>
+                <span>30</span>
+                <!-- Blank filler cells to align grid perfectly -->
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+
         <div class="date-time serif">November 01, 2026 at 7:00 PM</div>
         <div class="venue">
             <strong>The Grand Signiel Hotel, 76th Floor</strong><br>
@@ -608,7 +713,6 @@
 
         wavesPath.style.display = 'none';
 
-        // --- STABLE BULLETPROOF MP3 ROUTE USING RAW GITHUB LINK ---
         const bgMusic = new Audio("https://raw.githubusercontent.com/ngqifa/wedding_invitation/926e8711fccb239c005fd1bbc08c7352f1a1a919/yung%20kai%20-%20blue%20(official%20music%20video).mp3");
         bgMusic.loop = true;
 
