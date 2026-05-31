@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Wedding Invitation</title>
     <!-- Elegant Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,400;1,300&family=Noto+Sans+KR:wght=300;400&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -136,11 +136,76 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
+        /* --- GROOM & BRIDE PROFILES (STRICT SIDE-BY-SIDE) --- */
+        .couple-profiles {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 30px auto 0 auto;
+            max-width: 600px;
+        }
+        .profile-card {
+            flex: 1;
+            text-align: center;
+            min-width: 0;
+        }
+        .profile-frame {
+            width: 100%;
+            max-width: 120px;
+            aspect-ratio: 1;
+            margin: 0 auto 15px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            padding: 6px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            transition: transform 0.4s ease;
+        }
+        .profile-frame:hover .profile-img {
+            transform: scale(1.05);
+        }
+        .profile-card h3 {
+            font-size: 1.4rem;
+            margin: 0 0 2px 0;
+            color: var(--text-color);
+        }
+        .profile-role {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-color);
+        }
+        .couple-connective {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--accent-color);
+            opacity: 0.6;
+            padding-bottom: 35px;
+        }
+
         /* Intro Section */
         .intro p {
             font-size: 1.1rem;
             font-style: italic;
             color: #555;
+        }
+        .promise-illustration {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            margin: 20px auto;
+            display: block;
+            opacity: 0.95;
         }
 
         /* --- MINI WEDDING CALENDAR --- */
@@ -377,6 +442,7 @@
         }
         .form-group {
             margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
         .form-group label {
             display: block;
@@ -386,6 +452,7 @@
             letter-spacing: 0.5px;
         }
         .form-group input[type="text"],
+        .form-group input[type="number"],
         .form-group select {
             width: 100%;
             padding: 12px;
@@ -421,13 +488,13 @@
             margin-top: 10px;
         }
         
+        /* Smooth Toggle Field Adjustments */
         .hidden-field {
             opacity: 0;
             max-height: 0;
             margin-bottom: 0;
             overflow: hidden;
             pointer-events: none;
-            transition: all 0.3s ease;
         }
 
         /* --- FLOATING MUSIC CONTROLLER --- */
@@ -476,12 +543,16 @@
             .icon-container svg { width: 24px; height: 24px; }
             .music-toggle-btn { bottom: 20px; right: 20px; width: 44px; height: 44px; }
             .calendar-wrapper { padding: 15px 10px; }
+            .promise-illustration { max-width: 220px; }
         }
 
         @media screen and (min-width: 768px) {
             html { font-size: 16px; }
             section { padding: 90px 24px; }
             .gallery-grid { gap: 12px; }
+            .profile-frame { max-width: 160px; }
+            .couple-profiles { gap: 35px; }
+            .couple-connective { font-size: 2rem; padding-bottom: 45px; }
         }
     </style>
 </head>
@@ -509,19 +580,84 @@
         <p>Save The Date</p>
         <h1>Gary & Gigi</h1>
         <div class="serif" style="font-size: 1.3rem; color: var(--accent-color);">2026 . 11 . 01 / SUNDAY 7:00 PM</div>
-        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/wedding-character-transparent%20(1).png" alt="Wedding Portrait" class="main-photo">
+        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/wedding-character-transparent%20(1).png" class="main-photo">
     </section>
 
-    <!-- 2. INVITATION INTRO -->
-    <section class="intro">
-        <h2 class="serif">Invitation</h2>
+    <!-- 1.5 GROOM & BRIDE PROFILE SECTION -->
+    <section class="couple-section" style="border-top: 1px solid var(--border-color); background-color: var(--bg-color);">
+        <h2 class="serif" style="font-size: 2.2rem; color: var(--accent-color);">Groom & Bride</h2>
         <div class="divider"></div>
-        <p>
-            Two distinct lives, guided by a single love,<br>
-            have decided to walk the same path together.<br>
-            We would be deeply honored to have you join us<br>
-            as we promise our lifetimes to one another.
-        </p>
+        
+        <div class="couple-profiles">
+            <!-- Groom -->
+            <div class="profile-card">
+                <div class="profile-frame">
+                    <!-- NEW: Updated Groom Image URL -->
+                    <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/groom.jpeg" alt="Gary" class="profile-img">
+                </div>
+                <h3 class="serif">Ng Qi Fa</h3>
+                <span class="profile-role">The Groom</span>
+            </div>
+
+            <!-- Decorative "&" Connector -->
+            <div class="couple-connective">&</div>
+
+            <!-- Bride -->
+            <div class="profile-card">
+                <div class="profile-frame">
+                    <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Bride.jpeg" alt="Gigi" class="profile-img">
+                </div>
+                <h3 class="serif">Aw Yong Gi</h3>
+                <span class="profile-role">The Bride</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ENHANCED ELEGANT INVITATION INTRO -->
+    <section class="intro" style="padding: 12% 24px; background-color: var(--bg-color);">
+        <!-- Minimalist Diamond Ring Vector Icon -->
+        <div class="hand-drawn-art" style="margin-bottom: 25px;">
+            <svg width="55" height="55" viewBox="0 0 24 24" style="fill: none; stroke: var(--accent-color); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85;">
+                <!-- Diamond Top -->
+                <path d="M8.5 4h7L18 7.5l-6 4.5-6-4.5z" />
+                <path d="M8.5 4L12 7.5 15.5 4M6 7.5h12" opacity="0.6" stroke-width="0.9" />
+                <!-- Ring Band -->
+                <circle cx="12" cy="15.5" r="4.5" />
+            </svg>
+        </div>
+
+        <h2 class="serif" style="font-size: 2.4rem; font-style: italic; margin: 0 0 15px 0; color: var(--accent-color); font-weight: 300;">
+            The Promise
+        </h2>
+        
+        <!-- Elegant Multi-line Border Divider -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px;">
+            <div style="width: 30px; height: 1px; background-color: var(--border-color);"></div>
+            <span style="font-size: 0.75rem; letter-spacing: 4px; color: #a0988e; text-transform: uppercase;">Together</span>
+            <div style="width: 30px; height: 1px; background-color: var(--border-color);"></div>
+        </div>
+
+        <!-- Promise Section Illustration -->
+        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/%E9%80%8F%E6%98%8E%E8%83%8C%E6%99%AF%E7%94%9F%E6%88%90.png" class="promise-illustration" alt="Wedding Illustration">
+
+        <!-- Styled Poem/Text Context -->
+        <div style="max-width: 480px; margin: 0 auto; padding: 0 10px;">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; line-height: 2.2; color: #3a3a3a; font-style: italic; margin: 20px 0 30px 0;">
+                Two distinct lives, guided by a single love,<br>
+                have decided to walk the same path together.<br>
+                We would be deeply honored to have you join us<br>
+                as we promise our lifetimes to one another.
+            </p>
+        </div>
+
+        <!-- Hand-drawn Botanical/Leaf Bottom Accent -->
+        <div style="margin-top: 20px; opacity: 0.6;">
+            <svg width="40" height="20" viewBox="0 0 40 20" style="fill: none; stroke: var(--accent-color); stroke-width: 1;">
+                <path d="M20 18C20 18 17 12 11 11M20 18C20 18 23 12 29 11M20 18V4" stroke-linecap="round"/>
+                <path d="M20 10C18.5 8.5 16 8 16 8C16 8 17.5 10.5 19 11" fill="rgba(140, 130, 117, 0.1)"/>
+                <path d="M20 10C21.5 8.5 24 8 24 8C24 8 22.5 10.5 21 11" fill="rgba(140, 130, 117, 0.1)"/>
+            </svg>
+        </div>
     </section>
 
     <!-- 3. WEDDING TIMETABLE -->
@@ -536,8 +672,8 @@
                         <path d="M10 6h4" opacity="0.5"/>
                     </svg>
                 </div>
-                <span class="time">11:30 AM</span>
-                <span class="event-title">Guest Arrival & Welcome Drink</span>
+                <span class="time">07:00 PM</span>
+                <span class="event-title">Guest Arrival & Registration</span>
             </li>
             <li class="timeline-item">
                 <div class="icon-container">
@@ -547,7 +683,7 @@
                         <path d="M8 9.5c.5-1.5 2-2 2-2M15 7c.5-1.5 1.5-1.5 1.5-1.5" opacity="0.7" />
                     </svg>
                 </div>
-                <span class="time">12:00 PM</span>
+                <span class="time">08:00 PM</span>
                 <span class="event-title">Wedding Ceremony Begins</span>
             </li>
             <li class="timeline-item">
@@ -558,18 +694,8 @@
                         <circle cx="19" cy="10" r="0.5" fill="currentColor" />
                     </svg>
                 </div>
-                <span class="time">12:45 PM</span>
-                <span class="event-title">Family & Group Photos</span>
-            </li>
-            <li class="timeline-item">
-                <div class="icon-container">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 19h16v2H4zM5 13h14v6H5zM7 8h10v5H7z" />
-                        <path d="M12 4v4M10 5l1-1M14 5l-1-1" opacity="0.8"/>
-                    </svg>
-                </div>
-                <span class="time">01:15 PM</span>
-                <span class="event-title">Banquet & Celebration Feast</span>
+                <span class="time">10:00 PM</span>
+                <span class="event-title">Photos sessions</span>
             </li>
         </ul>
     </section>
@@ -682,6 +808,8 @@
                         </label>
                     </div>
                 </div>
+                
+                <!-- Main Pax Dropdown Container -->
                 <div class="form-group" id="paxContainer">
                     <label for="paxCount">NUMBER OF PAX (INCLUDING YOU)</label>
                     <select id="paxCount">
@@ -689,9 +817,16 @@
                         <option value="2">2 People</option>
                         <option value="3">3 People</option>
                         <option value="4">4 People</option>
-                        <option value="5">5+ People</option>
+                        <option value="5+">5+ People</option>
                     </select>
                 </div>
+
+                <!-- Dynamic Custom Pax Input Box -->
+                <div class="form-group hidden-field" id="customPaxContainer">
+                    <label for="customPaxInput">PLEASE SPECIFY THE EXACT NUMBER OF GUESTS</label>
+                    <input type="number" id="customPaxInput" min="5" max="20" placeholder="e.g. 6">
+                </div>
+
                 <button type="submit" class="submit-btn">SUBMIT RESPONSE</button>
             </form>
         </div>
@@ -700,8 +835,11 @@
     <script>
         const modal = document.getElementById('rsvpModal');
         const paxContainer = document.getElementById('paxContainer');
+        const customPaxContainer = document.getElementById('customPaxContainer');
+        const customPaxInput = document.getElementById('customPaxInput');
         const rsvpForm = document.getElementById('rsvpForm');
         const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const paxSelect = document.getElementById('paxCount');
         
         const musicBtn = document.getElementById('musicBtn');
         const wavesPath = document.getElementById('wavesPath');
@@ -748,12 +886,24 @@
             modal.classList.remove('active');
         }
 
+        // Handles conditional field displays (Attendance & Pax count toggles)
         rsvpForm.addEventListener('change', function(event) {
-            if (event.target.name === 'attendance') {
-                if (event.target.value === 'no') {
-                    paxContainer.classList.add('hidden-field');
+            const attendanceChoice = document.querySelector('input[name="attendance"]:checked')?.value;
+            
+            if (attendanceChoice === 'no') {
+                paxContainer.classList.add('hidden-field');
+                customPaxContainer.classList.add('hidden-field');
+                customPaxInput.removeAttribute('required');
+            } else {
+                paxContainer.classList.remove('hidden-field');
+                
+                // Nest check for the 5+ value select option
+                if (paxSelect.value === '5+') {
+                    customPaxContainer.classList.remove('hidden-field');
+                    customPaxInput.setAttribute('required', 'true');
                 } else {
-                    paxContainer.classList.remove('hidden-field');
+                    customPaxContainer.classList.add('hidden-field');
+                    customPaxInput.removeAttribute('required');
                 }
             }
         });
@@ -776,12 +926,17 @@
 
             const name = document.getElementById('guestName').value;
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const pax = document.getElementById('paxCount').value;
+            
+            // Calculate final pax value safely based on select choices
+            let finalPax = document.getElementById('paxCount').value;
+            if (attendance === 'yes' && finalPax === '5+') {
+                finalPax = customPaxInput.value;
+            }
 
             const rsvpData = {
                 name: name,
                 attendance: attendance === 'yes' ? 'Joyfully Attend' : 'Regretfully Decline',
-                pax: attendance === 'no' ? 0 : pax 
+                pax: attendance === 'no' ? 0 : parseInt(finalPax, 10)
             };
 
             fetch(GOOGLE_SCRIPT_URL, {
@@ -797,6 +952,8 @@
                 alert(`Thank you, ${name}! Your response has been successfully saved.`);
                 document.getElementById('rsvpForm').reset();
                 paxContainer.classList.remove('hidden-field');
+                customPaxContainer.classList.add('hidden-field');
+                customPaxInput.removeAttribute('required');
                 closeModal();
             })
             .catch((error) => {
