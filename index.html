@@ -16,6 +16,12 @@
             --border-color: #e5dfd5;
         }
 
+        /* --- GLOBAL RESPONSIVE BASE --- */
+        html {
+            /* Dynamically sizes base text relative to viewport width */
+            font-size: calc(14px + 0.3vw); 
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -24,6 +30,7 @@
             font-family: 'Noto Sans KR', sans-serif;
             text-align: center;
             line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3, .serif {
@@ -32,10 +39,12 @@
             letter-spacing: 1px;
         }
 
+        /* Responsive container constraints */
         section {
-            padding: 80px 20px;
-            max-width: 600px;
+            padding: 10% 24px; /* Percentage padding scales with screen height */
+            max-width: 650px;
             margin: 0 auto;
+            box-sizing: border-box;
         }
 
         .divider {
@@ -60,6 +69,8 @@
             justify-content: center;
             z-index: 9999;
             transition: opacity 0.8s ease, transform 0.8s ease;
+            padding: 20px;
+            box-sizing: border-box;
         }
         .welcome-overlay.fade-out {
             opacity: 0;
@@ -67,18 +78,18 @@
             pointer-events: none;
         }
         .welcome-box {
+            width: 100%;
             max-width: 400px;
-            padding: 20px;
         }
         .welcome-box p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--accent-color);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         .welcome-box h2 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             margin: 0 0 40px 0;
             color: var(--text-color);
         }
@@ -86,81 +97,91 @@
             background-color: transparent;
             color: var(--accent-color);
             border: 1px solid var(--accent-color);
-            padding: 14px 40px;
+            padding: 14px 45px;
             font-size: 0.85rem;
             letter-spacing: 2px;
             cursor: pointer;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            width: auto;
         }
         .enter-btn:hover {
             background-color: var(--accent-color);
             color: white;
         }
 
-        /* Hero Section */
+        /* --- HERO COVER --- */
         .hero {
-            padding: 100px 20px;
+            padding: 12% 24px;
             background-color: var(--light-beige);
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
         }
         .hero p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin: 0 0 10px 0;
         }
         .main-photo {
             width: 100%;
             max-width: 450px;
-            height: 550px;
+            height: auto;
+            aspect-ratio: 4 / 5;
             object-fit: cover;
-            margin-top: 30px;
+            margin-top: 35px;
             border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
         /* Intro Section */
         .intro p {
-            font-size: 1.05rem;
+            font-size: 1.1rem;
             font-style: italic;
-            color: #666;
+            color: #555;
         }
 
         /* Details & Map Section */
         .details h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--accent-color);
         }
         .date-time {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             margin-bottom: 15px;
         }
         .venue {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 300;
             margin-bottom: 30px;
         }
         .map-container {
             width: 100%;
-            height: 250px;
+            height: 0;
+            padding-bottom: 60px; /* Maintains beautiful responsive box scale */
+            min-height: 260px;
             background-color: #eee;
             border-radius: 2px;
             overflow: hidden;
             border: 1px solid var(--border-color);
+            position: relative;
         }
         .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             border: 0;
         }
 
-        /* Timetable Section with Hand-drawn Icons */
+        /* --- TIMETABLE TRACKS --- */
         .timeline {
             margin: 40px auto 0 auto;
-            max-width: 450px;
+            max-width: 500px;
             position: relative;
             padding: 0;
             list-style: none;
@@ -177,7 +198,7 @@
         .timeline-item {
             margin-bottom: 40px;
             position: relative;
-            padding-left: 80px;
+            padding-left: 75px;
             text-align: left;
             display: flex;
             flex-direction: column;
@@ -189,8 +210,8 @@
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
+            width: 58px;
+            height: 58px;
             background: var(--bg-color);
             border: 1px solid var(--border-color);
             border-radius: 50%;
@@ -200,8 +221,8 @@
             z-index: 2;
         }
         .icon-container svg {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             stroke: var(--accent-color);
             fill: none;
             stroke-width: 1.2;
@@ -210,7 +231,7 @@
         }
         .time {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: var(--accent-color);
             display: block;
             line-height: 1.2;
@@ -223,7 +244,7 @@
             line-height: 1.4;
         }
 
-        /* Gallery */
+        /* --- GALLERY GRID --- */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -234,9 +255,13 @@
             width: 100%;
             aspect-ratio: 1;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.02);
         }
 
-        /* RSVP Button & Modal Styling */
+        /* --- RSVP MODAL --- */
         .rsvp-btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -253,8 +278,6 @@
         .rsvp-btn:hover {
             background-color: #71685d;
         }
-
-        /* RSVP Modal Page overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -269,6 +292,8 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
             z-index: 1000;
+            padding: 16px;
+            box-sizing: border-box;
         }
         .modal-overlay.active {
             opacity: 1;
@@ -277,24 +302,24 @@
         .modal-box {
             background: var(--bg-color);
             padding: 40px 30px;
-            width: 90%;
-            max-width: 400px;
+            width: 100%;
+            max-width: 420px;
             border-radius: 4px;
             text-align: left;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             position: relative;
+            box-sizing: border-box;
         }
         .close-btn {
             position: absolute;
             top: 15px;
             right: 20px;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
             color: #999;
         }
         .form-group {
             margin-bottom: 20px;
-            transition: opacity 0.3s ease, max-height 0.3s ease;
         }
         .form-group label {
             display: block;
@@ -306,84 +331,102 @@
         .form-group input[type="text"],
         .form-group select {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid var(--border-color);
             border-radius: 2px;
             box-sizing: border-box;
             font-family: inherit;
             color: var(--text-color);
             background: white;
+            font-size: 1rem;
         }
         .radio-group {
             display: flex;
             gap: 20px;
-            margin-top: 5px;
+            margin-top: 8px;
         }
         .radio-label {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 0.95rem;
+            gap: 6px;
+            font-size: 1rem;
             cursor: pointer;
         }
         .submit-btn {
             width: 100%;
             background-color: var(--accent-color);
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
             cursor: pointer;
             letter-spacing: 1px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-top: 10px;
         }
         
-        /* Utility class to hide elements smoothly */
         .hidden-field {
             opacity: 0;
             max-height: 0;
             margin-bottom: 0;
             overflow: hidden;
             pointer-events: none;
+            transition: all 0.3s ease;
         }
 
-        /* Minimalist Floating Music Button */
+        /* --- FLOATING CONTROLLER --- */
         .music-toggle-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
-            width: 45px;
-            height: 45px;
-            background-color: rgba(252, 251, 250, 0.9);
+            width: 48px;
+            height: 48px;
+            background-color: rgba(252, 251, 250, 0.95);
             border: 1px solid var(--border-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             z-index: 999;
             transition: transform 0.2s ease;
         }
-        .music-toggle-btn:active {
-            transform: scale(0.92);
-        }
         .music-toggle-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             fill: none;
             stroke: var(--accent-color);
             stroke-width: 1.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
         }
         .music-toggle-btn.playing {
             animation: pulse-slow 2s infinite ease-in-out;
         }
         @keyframes pulse-slow {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); box-shadow: 0 4px 15px rgba(140,130,117,0.15); }
+            50% { transform: scale(1.06); }
             100% { transform: scale(1); }
+        }
+
+        /* --- SPECIFIC DEVICE MEDIA QUERIES --- */
+        
+        /* 1. Mobile Smart Phones (Portrait view Optimization) */
+        @media screen and (max-width: 480px) {
+            html { font-size: 15px; } /* Ensures readability on small handheld displays */
+            section { padding: 60px 20px; }
+            .welcome-box h2 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .timeline::before { left: 25px; }
+            .timeline-item { padding-left: 65px; }
+            .icon-container { width: 50px; height: 50px; }
+            .icon-container svg { width: 24px; height: 24px; }
+            .music-toggle-btn { bottom: 20px; right: 20px; width: 44px; height: 44px; }
+        }
+
+        /* 2. Tablets and Laptops (Landscape / Desktop view Balance) */
+        @media screen and (min-width: 768px) {
+            html { font-size: 16px; }
+            section { padding: 90px 24px; }
+            .gallery-grid { gap: 12px; }
         }
     </style>
 </head>
@@ -563,14 +606,12 @@
         
         let isPlaying = false;
 
-        // Hide sound waves initially
         wavesPath.style.display = 'none';
 
         // --- STABLE BULLETPROOF MP3 ROUTE USING RAW GITHUB LINK ---
         const bgMusic = new Audio("https://raw.githubusercontent.com/ngqifa/wedding_invitation/926e8711fccb239c005fd1bbc08c7352f1a1a919/yung%20kai%20-%20blue%20(official%20music%20video).mp3");
         bgMusic.loop = true;
 
-        // Trigger music once user interacts by clicking "Enter"
         function enterInvitation() {
             welcomeOverlay.classList.add('fade-out');
             
@@ -579,11 +620,10 @@
                 wavesPath.style.display = 'block';
                 isPlaying = true;
             }).catch(err => {
-                console.log("Autoplay context restricted: manual interaction required via floating button.", err);
+                console.log("Autoplay context restricted: manual interaction required.", err);
             });
         }
 
-        // Toggle Music Play / Pause
         function toggleMusic() {
             if (!isPlaying) {
                 bgMusic.play().then(() => {
