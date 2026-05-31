@@ -395,6 +395,11 @@
             flex-direction: row-reverse !important;
         }
 
+        .moment-row.stacked {
+            flex-direction: column !important;
+            align-items: center;
+        }
+
         .moment-card-v2 {
             width: 42%;
             background: rgba(252, 251, 250, 0.95);
@@ -885,7 +890,7 @@
                         <p class="moment-desc-v2">Spreading our wings! Our first major trips together to the waters of Semporna and the vibrant streets of Bangkok.</p>
                     </div>
                     <!-- Two pictures side-by-side -->
-                    <div style="display: flex; gap: 4px; background: #fff; padding: 0 4px 4px 4px;">
+                    <div style="display: flex; flex-direction: column; gap: 6px; background: #fff; padding: 0 4px 4px 4px;">
                         <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/semporna.jpeg" alt="Semporna Trip" class="moment-img-v2" style="flex: 1; width: 50%; aspect-ratio: 1/1; object-fit: cover;">
                         <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/bangkok.jpeg" alt="Bangkok Trip" class="moment-img-v2" style="flex: 1; width: 50%; aspect-ratio: 1/1; object-fit: cover;">
                     </div>
@@ -901,7 +906,7 @@
                         <p class="moment-desc-v2">Singing along at our first live concert together... and taking the ultimate step forward. We got engaged! 💍</p>
                     </div>
                     <!-- Two pictures side-by-side -->
-                    <div style="display: flex; flex-direction: row; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color);">
+                    <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color);">
                         <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Concert%20(2).jpeg" alt="Concert Together" class="moment-img-v2" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px;">
                         <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Engaged.jpeg" alt="Got Engaged" class="moment-img-v2" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px;">
                     </div>
@@ -917,12 +922,12 @@
                         <p class="moment-desc-v2">A whirlwind milestone year: Exploring Japan, making things official with our ROM, and welcoming Boba, our adorable Corgi, into the family! 🐾</p>
                     </div>
                     <!-- 3-Picture Grid (1 Large Left, 2 Small Right Stacked) -->
-                    <div style="display: flex; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color); height: 200px;">
+                    <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color);">
                         <!-- Left Big Picture (e.g., Japan Trip) -->
                         <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Japan.JPG" alt="Japan Trip" class="moment-img-v2" style="width: 50%; height: 100%; object-fit: cover; border-radius: 4px;">
                         
                         <!-- Right Stacked Column -->
-                        <div style="display: flex; flex-direction: column; gap: 6px; width: 50%; height: 100%;">
+                        <div style="display: flex; flex-direction: column; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color);">
                             <!-- Top Right Picture (e.g., ROM) -->
                             <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/ROM.jpeg" alt="ROM Day" class="moment-img-v2" style="width: 100%; height: calc(50% - 3px); object-fit: cover; border-radius: 4px;">
                             <!-- Bottom Right Picture (e.g., Boba Corgi) -->
