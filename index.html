@@ -365,7 +365,95 @@
             color: var(--text-color);
             line-height: 1.4;
         }
+        /* --- CURVY TIMELINE LAYOUT (NO BORDERS) --- */
+        .moments-container {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            padding: 40px 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 600' preserveAspectRatio='none'%3E%3Cpath d='M50,0 C30,100 70,200 50,300 C30,400 70,500 50,600' fill='none' stroke='%238c8275' stroke-width='0.8' stroke-dasharray='4,4' opacity='0.6'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
+        .moment-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 60px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .moment-row.left-aligned {
+            flex-direction: row !important;
+        }
+
+        .moment-row.right-aligned {
+            flex-direction: row-reverse !important;
+        }
+
+        .moment-card-v2 {
+            width: 42%;
+            background: rgba(252, 251, 250, 0.95);
+            border: none; /* Removed the outer border */
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .moment-info-v2 {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .moment-year-v2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin: 0 0 5px 0;
+        }
+
+        .moment-desc-v2 {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .moment-img-v2 {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-top: none; /* Removed the border line separating text and picture */
+        }
+
+        .moment-spacer {
+            width: 42%;
+        }
+
+        /* --- MOBILE RESPONSIVE ADAPTATION --- */
+        @media screen and (max-width: 768px) {
+            .moments-container {
+                background-image: none;
+            }
+            .moment-row, .moment-row.left-aligned, .moment-row.right-aligned {
+                flex-direction: column !important;
+                margin-bottom: 40px;
+                padding: 0 20px;
+            }
+            .moment-card-v2 {
+                width: 100%;
+                max-width: 450px;
+            }
+            .moment-spacer {
+                display: none;
+            }
+        }
         /* --- GALLERY GRID --- */
         .gallery-grid {
             display: grid;
@@ -661,8 +749,8 @@
     </section>
 
     <!-- 3. WEDDING TIMETABLE -->
-    <section class="timetable" style="border-top: 1px solid var(--border-color);">
-        <h2 class="serif">Wedding Day Program</h2>
+<section class="timetable" style="border-top: 1px solid var(--border-color); position: relative;">
+  <h2 class="serif">Wedding Day Program</h2>
         <div class="divider"></div>
         <ul class="timeline">
             <li class="timeline-item">
@@ -695,9 +783,16 @@
                     </svg>
                 </div>
                 <span class="time">10:00 PM</span>
-                <span class="event-title">Photos Session</span>
+                <span class="event-title">Photos session</span>
             </li>
-        </ul>
+</ul>
+
+        <!-- Larger Image Accent Shifted Slightly to the Left -->
+        <div style="position: absolute; bottom: 40px; right: 15px; z-index: 5; line-height: 0;">
+            <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/482c62dfeefc7fac759f5f0e344c2401e0e39d3e/IMG_9147.PNG" 
+                 alt="Wedding Day Graphic" 
+                 style="width: 280px; height: auto; opacity: 0.95;">
+        </div>
     </section>
 
     <!-- 4. DETAILS, CALENDAR & LOCATION -->
@@ -768,21 +863,194 @@
         </div>
     </section>
 
-    <!-- 5. GALLERY -->
+<!-- 5. ENHANCED CURVY GALLERY TIMELINE -->
     <section class="gallery">
         <h2 class="serif">Our Moments</h2>
         <div class="divider"></div>
-        <div class="gallery-grid">
-            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=400" alt="Gallery 1">
-            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400" alt="Gallery 2">
-            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400" alt="Gallery 3">
+        
+        <div class="moments-container">
+            
+            <!-- 2021: Left Aligned -->
+            <div class="moment-row left-aligned">
+                <div class="moment-card-v2">
+                    <div class="moment-info-v2" style="background-color: var(--bg-color);">
+                        <h3 class="moment-year-v2">2021</h3>
+                        <p class="moment-desc-v2">The beginning of us. The year we first met and sparked a beautiful connection.</p>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/1st_met.jpeg" alt="We First Met" class="moment-img-v2">
+                </div>
+                <div class="moment-spacer"></div>
+            </div>
+
+            <!-- 2022: Right Aligned -->
+            <div class="moment-row right-aligned">
+                <div class="moment-card-v2">
+                    <div class="moment-info-v2" style="background-color: var(--bg-color);">
+                        <h3 class="moment-year-v2">2022</h3>
+                        <p class="moment-desc-v2">An unforgettable day trip exploring the beautiful sights and food of Penang.</p>
+                    </div>
+                    <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/penang.jpeg" alt="Penang Trip" class="moment-img-v2">
+                </div>
+                <div class="moment-spacer"></div>
+            </div>
+
+<!-- 2023: Left Aligned with 2 Pictures -->
+            <div class="moment-row left-aligned">
+                <div class="moment-card-v2">
+                    <div class="moment-info-v2">
+                        <h3 class="moment-year-v2">2023</h3>
+                        <p class="moment-desc-v2">Spreading our wings! Our first major trips together to the waters of Semporna and the vibrant streets of Bangkok.</p>
+                    </div>
+                    <!-- Two pictures side-by-side -->
+                    <div style="display: flex; gap: 4px; background: #fff; padding: 0 4px 4px 4px;">
+                        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/semporna.jpeg" alt="Semporna Trip" class="moment-img-v2" style="flex: 1; width: 50%; aspect-ratio: 1/1; object-fit: cover;">
+                        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/bangkok.jpeg" alt="Bangkok Trip" class="moment-img-v2" style="flex: 1; width: 50%; aspect-ratio: 1/1; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="moment-spacer"></div>
+            </div>
+
+<!-- 2024: Right Aligned with 2 Pictures Side-by-Side -->
+            <div class="moment-row right-aligned">
+                <div class="moment-card-v2">
+                    <div class="moment-info-v2" style="background-color: var(--bg-color);">
+                        <h3 class="moment-year-v2">2024</h3>
+                        <p class="moment-desc-v2">Singing along at our first live concert together... and taking the ultimate step forward. We got engaged! 💍</p>
+                    </div>
+                    <!-- Two pictures side-by-side -->
+                    <div style="display: flex; flex-direction: row; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color);">
+                        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Concert%20(2).jpeg" alt="Concert Together" class="moment-img-v2" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px;">
+                        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Engaged.jpeg" alt="Got Engaged" class="moment-img-v2" style="width: 50%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px;">
+                    </div>
+                </div>
+                <div class="moment-spacer"></div>
+            </div>
+
+<!-- 2025: Left Aligned with 3 Pictures Grid Layout -->
+            <div class="moment-row left-aligned">
+                <div class="moment-card-v2">
+                    <div class="moment-info-v2" style="background-color: var(--bg-color);">
+                        <h3 class="moment-year-v2">2025</h3>
+                        <p class="moment-desc-v2">A whirlwind milestone year: Exploring Japan, making things official with our ROM, and welcoming Boba, our adorable Corgi, into the family! 🐾</p>
+                    </div>
+                    <!-- 3-Picture Grid (1 Large Left, 2 Small Right Stacked) -->
+                    <div style="display: flex; gap: 6px; padding: 0 10px 10px 10px; background-color: var(--bg-color); height: 200px;">
+                        <!-- Left Big Picture (e.g., Japan Trip) -->
+                        <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Japan.JPG" alt="Japan Trip" class="moment-img-v2" style="width: 50%; height: 100%; object-fit: cover; border-radius: 4px;">
+                        
+                        <!-- Right Stacked Column -->
+                        <div style="display: flex; flex-direction: column; gap: 6px; width: 50%; height: 100%;">
+                            <!-- Top Right Picture (e.g., ROM) -->
+                            <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/ROM.jpeg" alt="ROM Day" class="moment-img-v2" style="width: 100%; height: calc(50% - 3px); object-fit: cover; border-radius: 4px;">
+                            <!-- Bottom Right Picture (e.g., Boba Corgi) -->
+                            <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Boba.jpeg" alt="Boba Corgi" class="moment-img-v2" style="width: 100%; height: calc(50% - 3px); object-fit: cover; border-radius: 4px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="moment-spacer"></div>
+            </div>
+
+<!-- 2026: Right Aligned -->
+            <div class="moment-row right-aligned">
+                <div class="moment-card-v2" style="background: var(--light-beige);">
+                    <div class="moment-info-v2">
+                        <h3 class="moment-year-v2" style="color: var(--heart-color); font-weight: 400;">2026</h3>
+                        <p class="moment-desc-v2" style="font-weight: 400;">The Wedding Day! Hand in hand, our forever chapter officially begins right here with you.</p>
+                    </div>
+                    <!-- Refocused and cropped wedding photo -->
+                    <img src="https://raw.githubusercontent.com/ngqifa/wedding_invitation/refs/heads/main/Wedding.JPG" 
+                         alt="The Wedding" 
+                         class="moment-img-v2" 
+                         style="width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center 35%;">
+                </div>
+                <div class="moment-spacer"></div>
+            </div>
+
         </div>
     </section>
+  
+<!-- 5.5. FOR YOU SECTION WITH CORNER SINGLE TULIP -->
+    <section class="for-you" style="background-color: var(--light-beige); padding: 60px 20px; text-align: center; border-bottom: 1px solid var(--border-color); margin-bottom: 60px; position: relative; overflow: hidden;">
+        <div style="max-width: 650px; margin: 0 auto; position: relative; z-index: 2;">
+            <h2 class="moment-title serif" style="margin-bottom: 25px;">For You</h2>
+            
+            <p class="serif" style="font-size: 1.15rem; line-height: 1.8; color: var(--accent-color); font-style: italic; margin-bottom: 20px;">
+                I once thought a wedding was just a formal announcement. Now I see it as one of the few gatherings adulthood still gifts us—a reason for people to travel across cities and countries, to show up wholeheartedly, and to offer their support without hesitation.
+            </p>
+            
+            <p style="font-size: 0.95rem; line-height: 1.8; color: var(--text-color); margin-top: 0;">
+                In a lifetime of some 30,000 days, it means so much that you chose this day to be with us. Thank you for making the journey, and thank you for celebrating this special moment by our side.
+            </p>
+        </div>
 
-    <!-- 6. RSVP BUTTON -->
-    <section class="rsvp" style="background-color: var(--light-beige);">
+        <!-- Perfectly Re-Centered Single Tulip (Bottom Right Corner) -->
+        <div style="position: absolute; right: 20px; bottom: 10px; z-index: 1; opacity: 0.85; pointer-events: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="70" height="70" fill="none" stroke="var(--accent-color)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                
+                <!-- 1. Straight Main Stem Centered at X=50 -->
+                <path d="M50,32 L50,95" stroke-width="1.6" />
+                
+                <!-- 2. Balanced Minimalist Leaves curving around the center axis -->
+                <!-- Left Leaf -->
+                <path d="M50,65 C32,56 32,40 42,32 C47,42 49,53 50,65 Z" fill="rgba(140, 130, 117, 0.12)" />
+                <!-- Right Leaf -->
+                <path d="M50,58 C68,48 68,32 58,24 C53,34 51,46 50,58 Z" fill="rgba(140, 130, 117, 0.12)" />
+
+                <!-- 3. Corrected Tulip Bloom (Perfectly centered on X=50 axis) -->
+                <g>
+                    <!-- Tulip head background fill & balanced outer boundaries -->
+                    <path d="M50,34 C42,20 48,6 54,18 C60,6 66,20 50,34 Z" fill="var(--heart-color)" fill-opacity="0.45" stroke-width="1.6" />
+                    <!-- Overlapping inner petal sketch line -->
+                    <path d="M51,18 C55,23 55,29 51,34" stroke-width="1.2" />
+                </g>
+
+                <!-- 4. Minimal String Ribbon Tie Bow (Centered on the stem at Y=72) -->
+                <!-- Center Knot -->
+                <circle cx="50" cy="72" r="2" fill="var(--accent-color)" />
+                <!-- Left Loop -->
+                <path d="M50,72 C43,68 40,77 49,72 Z" fill="var(--heart-color)" fill-opacity="0.2" stroke-width="1.2" />
+                <!-- Right Loop -->
+                <path d="M50,72 C57,68 60,77 51,72 Z" fill="var(--heart-color)" fill-opacity="0.2" stroke-width="1.2" />
+                <!-- Draping Ribbon Ends -->
+                <path d="M49,73 C46,80 43,84 45,88" stroke-width="1.2" />
+                <path d="M51,73 C54,80 57,84 55,88" stroke-width="1.2" />
+            </svg>
+        </div>
+    </section>
+  
+<!-- 6. RSVP SECTION -->
+    <section class="rsvp">
+        <!-- Elegant Hand-Drawn Envelope & Flowers Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="65" height="55" fill="none" stroke="var(--accent-color)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 15px; opacity: 0.85;">
+            <!-- Outer Envelope Base -->
+            <path d="M10,35 L10,70 C10,72 12,74 14,74 L86,74 C88,74 90,72 90,70 L90,35" />
+            <!-- Envelope Front Flaps (V-Fold) -->
+            <path d="M10,35 L50,60 L90,35" />
+            <path d="M10,72 L38,48" />
+            <path d="M90,72 L62,48" />
+            <!-- Open Back Flap (behind flowers) -->
+            <path d="M10,35 L32,16 M68,16 L90,35" />
+            
+            <!-- Hand-drawn Botanical/Flowers peaking out -->
+            <!-- Center Flower -->
+            <circle cx="50" cy="22" r="3" fill="var(--heart-color)" stroke="var(--heart-color)" />
+            <path d="M50,14 C47,18 45,22 50,22 C55,22 53,18 50,14 Z" fill="rgba(212, 163, 157, 0.3)" />
+            <path d="M50,30 C47,26 45,22 50,22 C55,22 53,26 50,30 Z" fill="rgba(212, 163, 157, 0.3)" />
+            <path d="M42,22 C46,19 50,17 50,22 C50,27 46,25 42,22 Z" fill="rgba(212, 163, 157, 0.3)" />
+            <path d="M58,22 C54,19 50,17 50,22 C50,27 54,25 58,22 Z" fill="rgba(212, 163, 157, 0.3)" />
+            
+            <!-- Left Stem & Leaves -->
+            <path d="M35,32 Q42,20 45,24" />
+            <path d="M38,24 C36,22 33,24 35,27 C37,30 40,27 38,24 Z" fill="none" />
+            
+            <!-- Right Stem & Berries/Buds -->
+            <path d="M65,32 Q58,16 56,18" />
+            <circle cx="58" cy="14" r="1.5" fill="var(--accent-color)" />
+            <circle cx="64" cy="18" r="1.5" fill="var(--accent-color)" />
+        </svg>
+
         <h2 class="serif">Are You Joining Us?</h2>
-        <p style="font-size: 0.9rem; color: #777;">Please kindly let us know your attendance by September 15, 2026.</p>
+        <p class="rsvp-subtitle">Please kindly let us know your attendance by Octorber 01, 2026.</p>
         <button class="rsvp-btn" onclick="openModal()">RSVP ONLINE</button>
     </section>
 
